@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Russian Roulette - ICP</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <div class="game-container">
+            <header class="game-header">
+                <h1 class="game-title">RUSSIAN ROULETTE</h1>
+                <div class="connection-status" id="connection-status">
+                    <span class="status-indicator" id="status-indicator"></span>
+                    <span id="connection-text">Connecting to ICP...</span>
+                </div>
+                <div class="game-stats">
+                    <div class="stat">
+                        <span class="stat-label">Best Streak:</span>
+                        <span class="stat-value" id="best-streak">0</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Games Played:</span>
+                        <span class="stat-value" id="games-played">0</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Current Streak:</span>
+                        <span class="stat-value" id="current-streak">0</span>
+                    </div>
+                </div>
+            </header>
+
+            <main class="game-main">
+                <div class="revolver-container">
+                    <div class="revolver">
+                        <div class="cylinder" id="cylinder">
+                            <div class="chamber" data-chamber="0"></div>
+                            <div class="chamber" data-chamber="1"></div>
+                            <div class="chamber" data-chamber="2"></div>
+                            <div class="chamber" data-chamber="3"></div>
+                            <div class="chamber" data-chamber="4"></div>
+                            <div class="chamber" data-chamber="5"></div>
+                        </div>
+                        <div class="barrel"></div>
+                        <div class="trigger-guard">
+                            <button class="trigger" id="trigger-btn" disabled>PULL TRIGGER</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="game-controls">
+                    <button class="control-btn start-btn" id="start-btn">START GAME</button>
+                    <button class="control-btn spin-btn" id="spin-btn" disabled>SPIN CHAMBER</button>
+                    <button class="control-btn reset-btn" id="reset-btn" disabled>RESET GAME</button>
+                </div>
+
+                <div class="game-info">
+                    <div class="current-chamber-info">
+                        <span>Current Chamber: </span>
+                        <span id="current-chamber-display">-</span>
+                    </div>
+                    <div class="bullet-info" id="bullet-info" style="display: none;">
+                        <div class="bullet-indicator">
+                            <span class="bullet-icon">●</span>
+                            <span class="bullet-text">Bullet Position: Chamber <span id="bullet-position">-</span></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="game-message" id="game-message">
+                    <p>Connect to Internet Computer and start a new game!</p>
+                </div>
+
+                <div class="leaderboard" id="leaderboard" style="display: none;">
+                    <h3>Leaderboard</h3>
+                    <div class="leaderboard-list" id="leaderboard-list"></div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script type="module" src="main.js"></script>
+</body>
+</html>

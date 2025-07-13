@@ -1,0 +1,27 @@
+// Version: 1.0.0
+type GameState__280278167 = {#GameOver; #InProgress; #NotStarted};
+type Game__975834932 =
+  {
+    bulletPosition : Nat;
+    chambers : [Bool];
+    currentChamber : Nat;
+    id : Nat;
+    player : Principal;
+    roundsSurvived : Nat;
+    startTime : Int;
+    state : GameState__280278167;
+    totalShots : Nat
+  };
+type PlayerStats__546147800 =
+  {
+    bestStreak : Nat;
+    gamesPlayed : Nat;
+    lastPlayed : Int;
+    roundsSurvived : Nat;
+    totalShots : Nat
+  };
+actor {
+  stable var activeGamesEntries : [(Principal, Game__975834932)];
+  stable var gameCounter : Nat;
+  stable var playerStatsEntries : [(Principal, PlayerStats__546147800)]
+};

@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "canisters": {
+    "russian_roulette_backend": {
+      "type": "motoko",
+      "main": "src/russian_roulette_backend/main.mo"
+    },
+    "russian_roulette_frontend": {
+      "type": "assets",
+      "source": ["src/russian_roulette_frontend/assets"]
+    },
+    "internet_identity": {
+      "candid": "https://github.com/dfinity/internet-identity/releases/latest/download/internet_identity.did",
+      "type": "custom",
+      
+      "specified_id": "rdmx6-jaaaa-aaaaa-aaadq-cai",
+      "remote": {
+        "id": {
+          "ic": "rdmx6-jaaaa-aaaaa-aaadq-cai"
+        }
+      },
+      "wasm": "https://github.com/dfinity/internet-identity/releases/latest/download/internet_identity_dev.wasm.gz"
+    }
+  },
+  "defaults": {
+    "build": {
+      "packtool": "mops sources",
+      "args": ""
+    }
+  },
+  "networks": {
+    "local": {
+      "bind": "127.0.0.1:4943",
+      "type": "ephemeral"
+    }
+  },
+  "output_env_file": ".env"
+}

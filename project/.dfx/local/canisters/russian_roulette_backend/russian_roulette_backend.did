@@ -1,0 +1,68 @@
+type Result_2 = 
+ variant {
+   err: text;
+   ok: record {
+         game: Game;
+         result: GameResult;
+       };
+ };
+type Result_1 = 
+ variant {
+   err: text;
+   ok: text;
+ };
+type Result = 
+ variant {
+   err: text;
+   ok: Game;
+ };
+type PlayerStats = 
+ record {
+   bestStreak: nat;
+   gamesPlayed: nat;
+   lastPlayed: int;
+   roundsSurvived: nat;
+   totalShots: nat;
+ };
+type GameState = 
+ variant {
+   GameOver;
+   InProgress;
+   NotStarted;
+ };
+type GameResult = 
+ variant {
+   Bang;
+   Error: text;
+   Safe;
+ };
+type Game = 
+ record {
+   bulletPosition: nat;
+   chambers: vec bool;
+   currentChamber: nat;
+   id: nat;
+   player: principal;
+   roundsSurvived: nat;
+   startTime: int;
+   state: GameState;
+   totalShots: nat;
+ };
+service : {
+  getCurrentGame: () -> (Result);
+  getGameInfo: () ->
+   (record {
+      activeGamesCount: nat;
+      totalGames: nat;
+      totalPlayers: nat;
+    }) query;
+  getLeaderboard: () -> (vec record {
+                               principal;
+                               PlayerStats;
+                             }) query;
+  getPlayerStats: () -> (PlayerStats);
+  pullTrigger: () -> (Result_2);
+  resetGame: () -> (Result_1);
+  spinChamber: () -> (Result);
+  startNewGame: () -> (Result);
+}
